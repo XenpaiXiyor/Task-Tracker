@@ -26,8 +26,27 @@ function saveTasks(tasks) {
   console.log("Tasks saved successfully!");
 }
 
-// // Core functionalities
-// function addTask(description) { ... }
+
+// Core functionalities
+
+// reusable fnc template to add tasks.
+function createTask(description, id) {
+  return {
+    id,
+    description,
+    status: "todo",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+}
+// add task
+function addTask(value) {
+  let tasks = loadTasks();
+  const newTask = createTask(value, tasks.length + 1);
+  tasks.push(newTask);
+  saveTasks(tasks);
+  console.log(`Task added successfully (Id: ${newTask.id}\nDescription: ${newTask.description})`);
+}
 // function updateTask(id, newDescription) { ... }
 // function deleteTask(id) { ... }
 // function markDone(id) { ... }
@@ -37,8 +56,6 @@ function saveTasks(tasks) {
 // Export List
 
 module.exports = {
-  loadTasks,
-  saveTasks,
   addTask,
   updateTask,
   deleteTask,
