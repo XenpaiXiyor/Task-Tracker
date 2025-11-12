@@ -1,7 +1,10 @@
 const fs = require("fs"); // fs = filesystem
 const filePath = "./tasks.json";
 
-// Helper function → ensures file exists and returns current tasks
+
+// Helper functions
+
+// ensures file exists and returns current tasks
 function loadTasks() {
   if (!fs.existsSync(filePath)) {
     fs.writeFileSync(filePath, "[]", "utf8");
@@ -18,8 +21,7 @@ function loadTasks() {
     }
   }
 }
-
-// // Helper function → saves updated tasks back
+// saves updated tasks
 function saveTasks(tasks) {}
 
 // // Core functionalities
