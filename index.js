@@ -1,4 +1,4 @@
-// functionalities
+``// functionalities
 /*
   1. add
   2. update
@@ -18,7 +18,10 @@ let value = process.argv[3];
 
 
 // add files needed to manage these functions
-const { addTask, updateTask, deleteTask, markDone, markProgress, listTask } = require('./taskManager');
+const { addTask, updateTask, deleteTask, markDone, markProgress, listTask, loadTasks } = require('./taskManager');
+
+let tasks = loadTasks();
+
 
 
 switch (command) {
@@ -50,3 +53,4 @@ switch (command) {
     console.log("❌ Unknown command. Try 'add', 'update', 'delete', 'mark-done', 'mark-in-progress', or 'list'.");
 }
 
+``

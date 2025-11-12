@@ -1,7 +1,6 @@
 const fs = require("fs"); // fs = filesystem
 const filePath = "./tasks.json";
 
-
 // Helper functions
 
 // ensures file exists and returns current tasks
@@ -22,7 +21,10 @@ function loadTasks() {
   }
 }
 // saves updated tasks
-function saveTasks(tasks) {}
+function saveTasks(tasks) {
+  fs.writeFileSync(filePath, JSON.stringify(tasks));
+  console.log("Tasks saved successfully!");
+}
 
 // // Core functionalities
 // function addTask(description) { ... }
@@ -36,6 +38,7 @@ function saveTasks(tasks) {}
 
 module.exports = {
   loadTasks,
+  saveTasks,
   addTask,
   updateTask,
   deleteTask,
