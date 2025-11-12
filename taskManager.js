@@ -26,7 +26,6 @@ function saveTasks(tasks) {
   console.log("Tasks saved successfully!");
 }
 
-
 // Core functionalities
 
 // reusable fnc template to add tasks.
@@ -45,9 +44,23 @@ function addTask(value) {
   const newTask = createTask(value, tasks.length + 1);
   tasks.push(newTask);
   saveTasks(tasks);
-  console.log(`Task added successfully (Id: ${newTask.id}\nDescription: ${newTask.description})`);
+  console.log(
+    `Task added successfully (Id: ${newTask.id}\nDescription: ${newTask.description})`
+  );
 }
-// function updateTask(id, newDescription) { ... }
+function updateTask(id, newDescription) {
+  let tasks = loadTasks();
+  let task = tasks.find((item) => item.id === Number(id));
+
+  if (task) {
+    task.description = newDescription;
+    task.updatedAt = new Date();
+    console.log(`Task #${task.id} updated successfully!`);
+  } else {
+    console.log("Task not found");
+  }
+  saveTasks(tasks);
+}
 // function deleteTask(id) { ... }
 // function markDone(id) { ... }
 // function markProgress(id) { ... }
