@@ -6,7 +6,7 @@ const filePath = "./tasks.json";
 // ensures file exists and returns current tasks
 function loadTasks() {
   if (!fs.existsSync(filePath)) {
-    fs.writeFileSync(filePath, "[]", "utf8");
+    fs.writeFileSync(filePath,"[]", "utf8");
     console.log("File Created!");
     return []; // start with an empty array
   } else {
