@@ -38,7 +38,7 @@ switch (command) {
     break;
 
   case "mark-done":
-    markDone();
+    markDone(arg1);
     break;
 
   case "mark-in-progress":

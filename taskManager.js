@@ -6,7 +6,7 @@ const filePath = "./tasks.json";
 // ensures file exists and returns current tasks
 function loadTasks() {
   if (!fs.existsSync(filePath)) {
-    fs.writeFileSync(filePath,"[]", "utf8");
+    fs.writeFileSync(filePath, "[]", "utf8");
     console.log("File Created!");
     return []; // start with an empty array
   } else {
@@ -25,9 +25,6 @@ function saveTasks(tasks) {
   fs.writeFileSync(filePath, JSON.stringify(tasks));
   console.log("Tasks saved successfully!");
 }
-
-// Core functionalities
-
 // reusable fnc template to add tasks.
 function createTask(description, id) {
   return {
@@ -38,6 +35,9 @@ function createTask(description, id) {
     updatedAt: new Date(),
   };
 }
+
+// Core functionalities
+
 // add task
 function addTask(value) {
   let tasks = loadTasks();
@@ -62,22 +62,51 @@ function updateTask(id, newDescription) {
   }
   saveTasks(tasks);
 }
+// delete tasks
 function deleteTask(id) {
   let tasks = loadTasks();
   let deleteTaskIndex = tasks.findIndex((item) => item.id === Number(id));
 
-  if (deleteTaskIndex > -1) { // only splice array when item is found
+  if (deleteTaskIndex > -1) {
+    // only splice array when item is found
     tasks.splice(deleteTaskIndex, 1); // 2nd parameter means remove one item only
     console.log("Deleted Task Successfully");
-  }
-  else {
+  } else {
     console.log("Task not found");
   }
   saveTasks(tasks);
 }
-// function markDone(id) { ... }
-// function markProgress(id) { ... }
-// function listTask(status) { ... }
+function markDone(id) {
+  let tasks = loadTasks();
+  let task = tasks.find((item) => item.id === Number(id));
+
+  if (task) {
+    task.status = "done";
+    task.updatedAt = new Date();
+    console.log(`Task #${task.id} completed successfully!`);
+  } else {
+    console.log("Task not found");
+  }
+
+  saveTasks(tasks);
+}
+function markProgress(id) {
+  let tasks = loadTasks();
+  let task = tasks.find((item) => item.id === Number(id));
+
+  if (task) {
+    task.status = "in-progress";
+    task.updatedAt = new Date();
+    console.log(`Task #${task.id} is in progress!`);
+  } else {
+    console.log("Task not found");
+  }
+
+  saveTasks(tasks);
+}
+function listTask(status) {
+
+}
 
 // Export List
 
