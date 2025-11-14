@@ -1,49 +1,56 @@
 // functionalities
 /*
-  1. add
-  2. update
-  3. delete
-  4. mark a task as in progress / done
-  5. list all tasks that are done / not done / in progress
-*/
+      1. add
+      2. update
+      3. delete
+      4. mark a task as in progress / done
+      5. list all tasks that are done / not done / in progress
+  */
 
 console.log(process.argv);
 
 //records the user command
 let command = process.argv[2]?.toLowerCase();
-// records the value like "Buy groceries"
-let value = process.argv[3];
-
+let arg1 = process.argv[3];
+let arg2 = process.argv[4];
 
 // add files needed to manage these functions
-const { addTask, updateTask, deleteTask, markDone, markProgress, listTask } = require('./taskManager');
-
+const {
+  addTask,
+  updateTask,
+  deleteTask,
+  markDone,
+  markProgress,
+  listTask,
+} = require("./taskManager");
 
 switch (command) {
-  case 'add':
-    addTask(value);
+  case "add":
+    addTask(arg1);
     break;
 
-  case 'update':
-    updateTask(value);
+  case "update":
+    updateTask(arg1, arg2);
     break;
 
-  case 'delete':
-    deleteTask(value);
+  case "delete":
+    deleteTask(arg1);
     break;
 
-  case 'mark-done':
-    markDone(value);
+  case "mark-done":
+    markDone();
     break;
 
-  case 'mark-in-progress':
-    markProgress(value);
+  case "mark-in-progress":
+    markProgress();
     break;
 
-  case 'list':
-    listTask(value);
+  case "list":
+    listTask();
     break;
 
   default:
-    console.log("❌ Unknown command. Try 'add', 'update', 'delete', 'mark-done', 'mark-in-progress', or 'list'.");
+    console.log(
+      "❌ Unknown command. Try 'add', 'update', 'delete', 'mark-done', 'mark-in-progress', or 'list'."
+    );
 }

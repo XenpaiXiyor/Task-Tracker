@@ -20,7 +20,7 @@ function loadTasks() {
     }
   }
 }
-// saves updated tasks
+// saves updated tasks/will be used inside other functions
 function saveTasks(tasks) {
   fs.writeFileSync(filePath, JSON.stringify(tasks));
   console.log("Tasks saved successfully!");
@@ -48,6 +48,7 @@ function addTask(value) {
     `Task added successfully (Id: ${newTask.id}\nDescription: ${newTask.description})`
   );
 }
+// update tasks
 function updateTask(id, newDescription) {
   let tasks = loadTasks();
   let task = tasks.find((item) => item.id === Number(id));
@@ -61,7 +62,19 @@ function updateTask(id, newDescription) {
   }
   saveTasks(tasks);
 }
-// function deleteTask(id) { ... }
+function deleteTask(id) {
+  let tasks = loadTasks();
+  let deleteTaskIndex = tasks.findIndex((item) => item.id === Number(id));
+
+  if (deleteTaskIndex > -1) { // only splice array when item is found
+    tasks.splice(deleteTaskIndex, 1); // 2nd parameter means remove one item only
+    console.log("Deleted Task Successfully");
+  }
+  else {
+    console.log("Task not found");
+  }
+  saveTasks(tasks);
+}
 // function markDone(id) { ... }
 // function markProgress(id) { ... }
 // function listTask(status) { ... }
