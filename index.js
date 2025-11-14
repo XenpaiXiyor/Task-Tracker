@@ -7,8 +7,6 @@
       5. list all tasks that are done / not done / in progress
 */
 
-  
-
 //records the user command
 let command = process.argv[2]?.toLowerCase();
 let arg1 = process.argv[3];
@@ -23,6 +21,11 @@ const {
   markProgress,
   listTask,
 } = require("./taskManager");
+
+console.log("Prefix of any command 'npm start'.");
+console.log(
+  "Try commands like 'add', 'update', 'delete', 'mark-done', 'mark-in-progress', or 'list'."
+);
 
 switch (command) {
   case "add":
