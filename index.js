@@ -5,9 +5,7 @@
       3. delete
       4. mark a task as in progress / done
       5. list all tasks that are done / not done / in progress
-  */
-
-console.log(process.argv);
+*/
 
 //records the user command
 let command = process.argv[2]?.toLowerCase();
@@ -42,11 +40,11 @@ switch (command) {
     break;
 
   case "mark-in-progress":
-    markProgress();
+    markProgress(arg1);
     break;
 
   case "list":
-    listTask();
+    listTask(arg1);
     break;
 
   default:

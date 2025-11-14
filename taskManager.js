@@ -22,7 +22,7 @@ function loadTasks() {
 }
 // saves updated tasks/will be used inside other functions
 function saveTasks(tasks) {
-  fs.writeFileSync(filePath, JSON.stringify(tasks));
+  fs.writeFileSync(filePath, JSON.stringify(tasks, null, 2));
   console.log("Tasks saved successfully!");
 }
 // reusable fnc template to add tasks.
@@ -105,7 +105,38 @@ function markProgress(id) {
   saveTasks(tasks);
 }
 function listTask(status) {
+  let tasks = loadTasks();
 
+  if (tasks.length === 0) {
+    console.log("Tasks not found!!");
+  }
+
+  let filteredTasks;
+  if (status === "done" || status === "todo" || status === "in-progress") {
+    filteredTasks = tasks.filter((task) => task.status === status);
+    console.log(`\n Tasks with status: ${status.toUpperCase()}`);
+  } else {
+    filteredTasks = tasks;
+    console.log("\n All Tasks:");
+  }
+
+  if (filteredTasks.length === 0) {
+    console.log(`No tasks found with status: ${status}`);
+    return;
+  }
+
+  // Display tasks
+  filteredTasks.forEach((task) => {
+    const statusEmoji =
+      task.status === "done"
+        ? "✅"
+        : task.status === "in-progress"
+        ? "🔄"
+        : "⏳";
+    console.log(
+      `${statusEmoji} [${task.id}] ${task.description} (${task.status})`
+    );
+  });
 }
 
 // Export List
