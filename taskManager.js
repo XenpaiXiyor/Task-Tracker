@@ -45,7 +45,7 @@ function addTask(value) {
   tasks.push(newTask);
   saveTasks(tasks);
   console.log(
-    `Task added successfully (Id: ${newTask.id}\nDescription: ${newTask.description})`
+    `Task added successfully (Id: ${newTask.id}\tDescription: ${newTask.description})`
   );
 }
 // update tasks
