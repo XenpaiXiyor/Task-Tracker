@@ -1,4 +1,4 @@
-# Task Tracker CLI
+# [Task Tracker CLI](https://github.com/XenpaiXiyor/Task-Tracker)
 
 A simple command-line interface (CLI) application to track and manage your tasks. Built with Node.js as a practice project for backend development.
 
