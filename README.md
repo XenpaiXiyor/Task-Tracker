@@ -1,6 +1,11 @@
-# [Task Tracker CLI](https://github.com/XenpaiXiyor/Task-Tracker)
+# Task Tracker CLI
 
-A simple command-line interface (CLI) application to track and manage your tasks. Built with Node.js as a practice project for backend development.
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=nodedotjs&logoColor=white)
+![Last Commit](https://img.shields.io/github/last-commit/RhythmMittal19/Task-Tracker)
+![No Dependencies](https://img.shields.io/badge/Dependencies-0-blue)
+
+A command-line task manager built with pure Node.js. Zero external dependencies — just the standard library and `process.argv`.
 
 ## Features
 
@@ -118,4 +123,4 @@ Rhythm Mittal
 
 ## License
 
-This project is open source and available for educational purposes.
+[MIT](LICENSE) — use however you want.
